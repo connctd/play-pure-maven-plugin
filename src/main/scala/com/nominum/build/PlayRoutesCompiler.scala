@@ -35,7 +35,7 @@ class PlayRoutesCompiler {
     }
     val routerTask = new RoutesCompiler.RoutesCompilerTask(routesFile, additionalImports, true, generateReverseRouter, false)
 
-    RoutesCompiler.compile(routerTask, StaticRoutesGenerator, generatedDir).fold(
+    RoutesCompiler.compile(routerTask, InjectedRoutesGenerator, generatedDir).fold(
       (errors: Seq[RoutesCompilationError]) =>
         throw new MojoExecutionException(errors.head, "Error in routes file on line " + errors.head.line, errors.head.message),
       (sf: Seq[File]) => {}
